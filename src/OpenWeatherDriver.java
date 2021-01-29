@@ -7,7 +7,8 @@ public class OpenWeatherDriver
     {
         OpenWeatherRequest owr = new OpenWeatherRequest();
         //owr.setQuery("q=london,uk");
-        owr.setQuery("zip=94501");
+        owr.setQuery("zip=94705");
         owr.getWeatherData();
+        System.out.println("Current Temperature for 94705: " + owr.getTemperature());
     }
 }

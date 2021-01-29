@@ -13,14 +13,13 @@ public class OpenWeatherRequest
 {
 
     //class vars
-    private static final String apiKey = "";
+    private static final String apiKey = "&APPID=3c38c4cc9274664fadb44d2bf3d80298";
     private static final String openWeatherURL = "https://api.openweathermap.org/data/2.5/weather?";
 
     //instance vars
     private String query;
 
-    private Double latitude;
-    private Double longitude;
+    private Double temperature;
 
     private String weather;
 
@@ -38,15 +37,13 @@ public class OpenWeatherRequest
         JSONObject weatherData = (JSONObject) obj;
 
 
-        Map coord = ((Map)weatherData.get("coord"));
-        longitude = (Double)coord.get("lon");
-        latitude = (Double)coord.get("lat");
+        Map main = ((Map)weatherData.get("main"));
+        temperature = ((Double)main.get("temp"));
+    }
 
-
-        JSONArray weatherArray = (JSONArray) weatherData.get("weather");
-        Map weatherDetails = (Map)weatherArray.get(0);
-        weather = (String)weatherDetails.get("main") + ":" + (String)weatherDetails.get("description");
-        System.out.println(weather);
+    public Double getTemperature()
+    {
+        return temperature;
     }
 
 }
